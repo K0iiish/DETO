@@ -1,0 +1,9 @@
+# Archivos del repositorio que no deben publicarse si el sitio se sube a Vercel
+herramientas/
+README.md
+LEEME.md
+assets/MANIFIESTO.md
+assets/productos/LEEME.txt
+wrangler.jsonc
+.assetsignore
+.wrangler/

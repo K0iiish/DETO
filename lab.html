@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DETO · LAB</title>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/header.css">
+  <!-- LAB reutiliza de Tendencias: .ico (máscaras SVG), .scope (toggle de 2 opciones), el desplegable (.filter-*), .filter-button y .progress. No se copian, se cargan desde tendencias.css -->
+  <link rel="stylesheet" href="css/tendencias.css" data-page-css>
+  <link rel="stylesheet" href="css/lab.css" data-page-css>
+</head>
+<body data-page="lab">
+  <div class="app-shell">
+    <div data-include="components/sidebar.html"></div>
+
+    <div class="app-main">
+      <div data-include="components/header.html"></div>
+
+      <main class="lab" id="contenido" data-preload="assets/img/lab-chocolate-con-leche-250g.png">
+        <header class="lab-head">
+          <h1 class="lab-head__title">LAB</h1>
+          <p class="lab-head__text">Experimenta, valida y evalúa el potencial de productos en tiendas Turbo.</p>
+          <small class="lab-head__note" data-source-note>Datos reales: ventas Turbo 1–14 oct 2026 (9 tiendas)</small>
+        </header>
+
+        <!-- Toggle Tiendas / Productos (reutiliza .scope de Tendencias) -->
+        <div class="lab-flow">
+          <div class="scope scope--lab" role="group" aria-label="Recorrido de análisis">
+            <button class="scope__btn tap" type="button" data-flow="stores" aria-pressed="false"><span class="ico ico--tienda lab-ico-17" aria-hidden="true"></span>Tiendas</button>
+            <button class="scope__btn tap" type="button" data-flow="products" aria-pressed="false"><span class="ico ico--lab-caja lab-ico-17" aria-hidden="true"></span>Productos</button>
+          </div>
+        </div>
+
+        <div class="lab-view" data-view></div>
+        <div class="lab-toast-host" data-toast aria-live="polite" role="status"></div>
+      </main>
+    </div>
+  </div>
+
+  <script src="js/include.js"></script>
+  <script src="data/imagenes.js"></script>
+  <script src="data/fotos-jumbo.js"></script>
+  <script src="js/imagenes.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/informe.js"></script>
+  <script src="data/taxonomia.js" data-page-js></script>
+  <script src="data/deto-real.js" data-page-js></script>
+  <script src="js/guardados.js" data-page-js></script>
+  <script src="data/lab.js" data-page-js></script>
+  <script src="js/lab.js" data-page-js></script>
+</body>
+</html>

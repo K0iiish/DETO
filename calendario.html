@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DETO · Calendario</title>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/header.css">
+  <!-- Calendario reutiliza de Tendencias: .ico, .btn-add y el desplegable (.filter-*). No se copian, se cargan desde tendencias.css -->
+  <link rel="stylesheet" href="css/tendencias.css" data-page-css>
+  <link rel="stylesheet" href="css/calendario.css" data-page-css>
+</head>
+<body data-page="calendario">
+  <div class="app-shell">
+    <div data-include="components/sidebar.html"></div>
+
+    <div class="app-main">
+      <div data-include="components/header.html"></div>
+
+      <main class="cal" id="contenido" data-preload="assets/img/tendencia-matcha-latte.png assets/img/tendencia-oreo-halloween.png assets/img/tendencia-electrolit-uva.png assets/img/tendencia-takis-fuego.png assets/img/tendencia-chocolate-sahne-nuss.png assets/img/tendencia-yogurt-griego.png">
+        <header class="cal-head">
+          <div>
+            <h1 class="cal-head__title">Calendario comercial</h1>
+            <p class="cal-head__text">Planifica hitos y anticipa oportunidades de surtido.</p>
+          </div>
+          <div class="cal-tabs" role="group" aria-label="Vista de calendario" data-views>
+            <button class="cal-tab tap" type="button" data-view="year" aria-pressed="false">Año</button>
+            <button class="cal-tab tap" type="button" data-view="bimonthly" aria-pressed="false">Bimestral</button>
+            <button class="cal-tab tap is-active" type="button" data-view="monthly" aria-pressed="true">Mensual</button>
+          </div>
+          <div class="cal-actions">
+            <button class="btn-add cal-add tap" type="button" data-add><span class="ico ico--cal-mas" aria-hidden="true"></span>Agregar evento</button>
+            <div class="filter-dropdown cal-category" data-category></div>
+          </div>
+        </header>
+
+        <div class="cal-body" data-body></div>
+        <div class="cal-modal-slot" data-modal></div>
+      </main>
+    </div>
+  </div>
+
+  <script src="js/include.js"></script>
+  <script src="data/imagenes.js"></script>
+  <script src="data/fotos-jumbo.js"></script>
+  <script src="js/imagenes.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/informe.js"></script>
+  <script src="data/taxonomia.js" data-page-js></script>
+  <script src="data/deto-real.js" data-page-js></script>
+  <script src="data/eventos.js" data-page-js></script>
+  <script src="js/calendario.js" data-page-js></script>
+</body>
+</html>

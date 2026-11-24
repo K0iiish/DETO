@@ -1,0 +1,9 @@
+{
+  // Configuración de Cloudflare: sitio estático, sin código de servidor.
+  // El nombre debe coincidir con el del proyecto en Cloudflare (deto-turbo).
+  "name": "deto-turbo",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./"
+  }
+}

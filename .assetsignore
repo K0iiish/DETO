@@ -1,0 +1,14 @@
+# Archivos del repositorio que no deben publicarse en el sitio
+.git
+.git/
+.gitignore
+.assetsignore
+wrangler.jsonc
+node_modules/
+herramientas/
+README.md
+LEEME.md
+assets/MANIFIESTO.md
+assets/productos/LEEME.txt
+.wrangler/
+.vercelignore

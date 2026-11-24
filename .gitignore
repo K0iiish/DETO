@@ -1,0 +1,16 @@
+# Sistema
+.DS_Store
+Thumbs.db
+__MACOSX/
+
+# Python
+__pycache__/
+*.pyc
+
+# Datos crudos: nunca subir el Excel ni las capturas originales
+*.xlsx
+*.xls
+*.csv
+
+# Cloudflare (archivos temporales de wrangler)
+.wrangler/

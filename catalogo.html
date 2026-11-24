@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DETO · Catálogo</title>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/header.css">
+  <!-- Catálogo reutiliza de Tendencias: .ico (máscaras SVG) y el desplegable (.filter-*). No se copian, se cargan desde tendencias.css -->
+  <link rel="stylesheet" href="css/tendencias.css" data-page-css>
+  <link rel="stylesheet" href="css/catalogo.css" data-page-css>
+</head>
+<body data-page="catalogo">
+  <div class="app-shell">
+    <div data-include="components/sidebar.html"></div>
+
+    <div class="app-main">
+      <div data-include="components/header.html"></div>
+
+      <main class="cat" id="contenido" data-preload="assets/img/catalogo-producto-placeholder.svg">
+        <header class="cat-head">
+          <h1 class="cat-head__title">Catálogo</h1>
+          <p class="cat-head__text">Visualiza el surtido actual y detecta oportunidades dentro de Turbo.</p>
+        </header>
+
+        <!-- Carrusel de macrocategorías (se rellena desde data/taxonomia.js) -->
+        <div class="cat-macros" role="group" aria-roledescription="carrusel" aria-label="Macrocategorías">
+          <button class="cat-macros__arrow tap" type="button" data-macro-prev aria-label="Macrocategorías anteriores"><span class="ico ico--cat-izq" aria-hidden="true"></span></button>
+          <div class="cat-macros__track" data-macro-track></div>
+          <button class="cat-macros__arrow tap" type="button" data-macro-next aria-label="Más macrocategorías"><span class="ico ico--cat-der" aria-hidden="true"></span></button>
+        </div>
+
+        <!-- Filtros principales -->
+        <section class="cat-filters" aria-label="Filtros del catálogo">
+          <div class="cat-field">
+            <span class="cat-field__label" id="cat-lbl-categoria">Categoría</span>
+            <div class="filter-dropdown cat-select" data-select="category"></div>
+          </div>
+          <div class="cat-field">
+            <span class="cat-field__label" id="cat-lbl-subcategoria">Subcategoría</span>
+            <div class="filter-dropdown cat-select" data-select="subcategory"></div>
+          </div>
+          <div class="cat-adv" data-adv></div>
+        </section>
+
+        <div class="cat-view" data-view aria-live="polite"></div>
+      </main>
+    </div>
+  </div>
+
+  <script src="js/include.js"></script>
+  <script src="data/imagenes.js"></script>
+  <script src="data/fotos-jumbo.js"></script>
+  <script src="js/imagenes.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/informe.js"></script>
+  <script src="data/taxonomia.js" data-page-js></script>
+  <script src="data/deto-catalogo.js" data-page-js></script>
+  <script src="js/catalogo.js" data-page-js></script>
+</body>
+</html>

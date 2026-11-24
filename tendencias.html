@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DETO · Tendencias</title>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/tendencias.css" data-page-css>
+</head>
+<body data-page="tendencias">
+  <div class="app-shell">
+    <div data-include="components/sidebar.html"></div>
+
+    <div class="app-main">
+      <div data-include="components/header.html"></div>
+
+      <main class="tend" id="contenido" data-preload="assets/img/tendencia-matcha-latte.png assets/img/tendencia-oreo-halloween.png assets/img/tendencia-electrolit-uva.png assets/img/tendencia-takis-fuego.png assets/img/tendencia-chocolate-sahne-nuss.png assets/img/tendencia-yogurt-griego.png">
+        <section class="tend-head" aria-label="Encabezado de Tendencias">
+          <div>
+            <h1 class="tend-head__title">Tendencias</h1>
+            <p class="tend-head__text">Descubre y evalúa oportunidades de surtido para Turbo.</p>
+          </div>
+          <div class="scope" role="group" aria-label="Mostrar oportunidades">
+            <button class="scope__btn is-active tap" type="button" data-scope="todas" aria-pressed="true">Todas</button>
+            <button class="scope__btn tap" type="button" data-scope="guardados" aria-pressed="false"><span class="ico ico--guardar" aria-hidden="true"></span>Guardados</button>
+          </div>
+          <button class="btn-add tap" type="button" data-add><span class="ico ico--mas" aria-hidden="true"></span>Agregar oportunidad</button>
+        </section>
+
+        <div class="layout is-panel-closed" data-layout>
+          <section class="opps" aria-label="Oportunidades">
+            <div class="filters" data-filters>
+              <!-- Los desplegables los genera js/tendencias.js a partir de los datos -->
+              <div class="adv" data-adv>
+                <button class="filter-button tap" type="button" aria-expanded="false" aria-controls="adv-panel" data-adv-toggle>
+                  <span class="ico ico--filtros" aria-hidden="true"></span>Filtros<i data-adv-dot aria-hidden="true"></i><b data-adv-count hidden></b>
+                </button>
+                <div class="adv-panel" id="adv-panel" role="dialog" aria-label="Filtros avanzados" hidden>
+                  <div class="adv-panel__head">
+                    <div><strong>Filtros avanzados</strong><span>Refina las oportunidades visibles</span></div>
+                    <button class="icon-btn tap" type="button" aria-label="Cerrar filtros" data-adv-close><span class="ico ico--cerrar" aria-hidden="true"></span></button>
+                  </div>
+                  <section class="adv-sec">
+                    <div class="adv-label"><strong>Puntaje DETO</strong><span data-adv-out="score">0–100</span></div>
+                    <label><span>Mínimo</span><input type="range" min="0" max="100" value="0" data-adv="scoreMin"></label>
+                    <label><span>Máximo</span><input type="range" min="0" max="100" value="100" data-adv="scoreMax"></label>
+                  </section>
+                  <section class="adv-sec">
+                    <div class="adv-label"><strong>Venta proyectada</strong><span>u./sem</span></div>
+                    <div class="adv-sales">
+                      <label><span>Mínimo</span><input type="number" min="0" max="300" value="0" data-adv="salesMin"></label>
+                      <label><span>Máximo</span><input type="number" min="0" max="300" value="300" data-adv="salesMax"></label>
+                    </div>
+                  </section>
+                  <section class="adv-sec">
+                    <div class="adv-label"><strong>Estado de tendencia</strong></div>
+                    <div class="adv-checks" data-adv-trends></div>
+                  </section>
+                  <section class="adv-sec">
+                    <div class="adv-label"><strong>Crecimiento de demanda</strong><span data-adv-out="growth">Mín. +0%</span></div>
+                    <input class="adv-growth" type="range" min="0" max="100" value="0" data-adv="growthMin" aria-label="Crecimiento mínimo de demanda">
+                  </section>
+                  <div class="adv-actions">
+                    <button class="adv-clear tap" type="button" data-adv-clear>Limpiar filtros</button>
+                    <button class="adv-apply tap" type="button" data-adv-apply>Aplicar filtros</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="active-filters" data-active-filters hidden aria-label="Filtros activos"></div>
+
+            <div class="controls">
+              <strong class="controls__count" data-count aria-live="polite"></strong>
+              <div class="controls__right">
+                <span class="controls__sort">Ordenar por: <b>Mayor puntaje</b><span class="ico ico--chevron-abajo" aria-hidden="true"></span></span>
+                <div class="views" role="group" aria-label="Tipo de vista">
+                  <button class="view is-active tap" type="button" data-view="grid" aria-label="Vista en grilla" aria-pressed="true"><span class="ico ico--vista-grilla" aria-hidden="true"></span></button>
+                  <button class="view tap" type="button" data-view="list" aria-label="Vista en lista" aria-pressed="false"><span class="ico ico--vista-lista" aria-hidden="true"></span></button>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid" data-grid></div>
+
+            <div class="list" data-list role="table" aria-label="Oportunidades en lista" hidden>
+              <div class="list-header" role="row">
+                <span role="columnheader">Producto ↓</span>
+                <span role="columnheader">Categoría</span>
+                <span role="columnheader">Venta proyectada</span>
+                <span role="columnheader">Cantidad</span>
+                <span role="columnheader">Puntaje DETO <span class="info" aria-hidden="true">ⓘ</span></span>
+                <span role="columnheader">Tendencia</span>
+                <span role="columnheader"><span class="sr-only">Acciones</span></span>
+              </div>
+              <div data-list-body></div>
+            </div>
+
+            <div class="empty" data-empty hidden>
+              <strong data-empty-title></strong>
+              <span data-empty-hint hidden>Prueba ajustando o limpiando los filtros aplicados.</span>
+              <button type="button" data-clear-all hidden>Limpiar filtros</button>
+            </div>
+          </section>
+
+          <!-- Panel de detalle: único para vista card y vista fila -->
+          <aside class="detail" data-detail hidden aria-label="Detalle de la tendencia">
+            <button class="detail__close tap" type="button" aria-label="Cerrar detalle" data-close><span class="ico ico--cerrar" aria-hidden="true"></span></button>
+
+            <div data-detail-body>
+              <section class="hero">
+                <div class="hero__img"><img data-d="image" alt="" width="118" height="142"></div>
+                <div class="hero__intro">
+                  <span class="badge" data-d="badge"></span>
+                  <h2 data-d="name"></h2>
+                  <p data-d="meta"></p>
+                  <span class="catalog-status" data-d="status"></span>
+                </div>
+                <button class="hero__save tap" type="button" data-save aria-pressed="false" aria-label="Guardar producto"><span class="ico ico--guardar" aria-hidden="true"></span></button>
+              </section>
+
+              <section class="reco">
+                <div class="reco__score"><span>Puntaje DETO</span><strong><span data-d="score"></span><small>/100</small></strong></div>
+                <div class="reco__text">
+                  <span class="ico ico--estrella" aria-hidden="true"></span>
+                  <div><strong>Alta recomendación</strong><span>Fuerte crecimiento de demanda y alta evidencia en redes.</span></div>
+                </div>
+              </section>
+
+              <div class="tabs" role="tablist" aria-label="Secciones del detalle" data-tabs>
+                <button class="tabs__btn tap" role="tab" type="button" id="tab-demanda" aria-controls="panel-demanda" aria-selected="false" tabindex="-1" data-tab="demanda">Demanda</button>
+                <button class="tabs__btn tap" role="tab" type="button" id="tab-senales" aria-controls="panel-senales" aria-selected="true" tabindex="0" data-tab="senales">Señales</button>
+                <button class="tabs__btn tap" role="tab" type="button" id="tab-mercado" aria-controls="panel-mercado" aria-selected="false" tabindex="-1" data-tab="mercado">Mercado</button>
+                <button class="tabs__btn tap" role="tab" type="button" id="tab-incorporacion" aria-controls="panel-incorporacion" aria-selected="false" tabindex="-1" data-tab="incorporacion">Incorporación</button>
+              </div>
+
+              <div class="tabpanels">
+                <!-- DEMANDA -->
+                <div class="tabpanel tabpanel--demanda" role="tabpanel" id="panel-demanda" aria-labelledby="tab-demanda" tabindex="0" hidden>
+                  <section class="chart-block" aria-label="Evolución de demanda estimada">
+                    <div class="chart-heading">
+                      <div>
+                        <strong>Evolución de demanda estimada</strong>
+                        <span class="chart-info-wrap">
+                          <button class="chart-info" type="button" aria-label="Información sobre la evolución de demanda" aria-describedby="demand-info-tooltip">i</button>
+                          <span class="chart-info-tooltip" id="demand-info-tooltip" role="tooltip">Unidades diarias vendidas en Turbo de los productos análogos (directos peso 1, cercanos 0,5, diferentes 0,25), del 1 al 14 de octubre de 2026. La venta proyectada es el promedio ponderado semanal.</span>
+                        </span>
+                      </div>
+                      <small>Análogos en Turbo · 1–14 oct 2026</small>
+                    </div>
+                    <div class="chart-plot" data-chart-plot>
+                      <div class="chart-tooltip is-final" data-chart-tip><small data-chart-tip-week hidden></small><strong data-chart-tip-value></strong></div>
+                      <svg class="chart" viewBox="0 0 420 145" preserveAspectRatio="none" role="img" data-chart-svg>
+                        <defs>
+                          <linearGradient id="demand-area-fill" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0" stop-color="#a8ed68" stop-opacity=".48"/>
+                            <stop offset=".64" stop-color="#cfff9e" stop-opacity=".22"/>
+                            <stop offset="1" stop-color="#efffd9" stop-opacity=".04"/>
+                          </linearGradient>
+                        </defs>
+                        <line class="chart-guide" x1="8" x2="408" y1="80" y2="80"/>
+                        <line class="chart-baseline" x1="8" x2="408" y1="130" y2="130"/>
+                        <path data-chart-area fill="url(#demand-area-fill)"/>
+                        <path class="demand-line" data-chart-line/>
+                        <g data-chart-hover hidden>
+                          <line class="demand-hover-guide" y1="8" y2="130" data-hover-guide/>
+                          <circle class="demand-hover-ring" r="6" data-hover-ring/>
+                          <circle class="demand-hover-point" r="3.8" data-hover-point/>
+                        </g>
+                        <circle class="demand-end-ring" cx="408" r="6" data-chart-end-ring/>
+                        <circle class="demand-end" cx="408" r="3.8" data-chart-end/>
+                      </svg>
+                      <div class="chart-axis" aria-hidden="true"><span>1 oct</span><span>4 oct</span><span>7 oct</span><span>11 oct</span><span>14 oct</span></div>
+                    </div>
+                    <div class="chart-metrics">
+                      <div class="dmetric">
+                        <span class="dmetric__icon"><span class="ico ico--carrito" aria-hidden="true"></span></span>
+                        <div><span>Venta proyectada</span><strong><span data-d="sales"></span> <small>u./sem</small></strong></div>
+                        <b data-d="growth-pill"></b>
+                      </div>
+                      <div class="dmetric dmetric--growth">
+                        <span class="dmetric__icon"><span class="ico ico--barras" aria-hidden="true"></span></span>
+                        <div><span>Crecimiento (sem 2 vs 1)</span><strong data-d="growth"></strong></div>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+
+                <!-- SEÑALES -->
+                <div class="tabpanel tabpanel--senales" role="tabpanel" id="panel-senales" aria-labelledby="tab-senales" tabindex="0">
+                  <h3 class="tab-title">Señales de tendencia <span class="info" title="Información" aria-hidden="true">ⓘ</span></h3>
+                  <ul class="signals" data-signals></ul>
+                  <section class="emo" data-emociones aria-label="Emociones del consumidor (IA simulada)"></section>
+                </div>
+
+                <!-- MERCADO -->
+                <div class="tabpanel tabpanel--mercado" role="tabpanel" id="panel-mercado" aria-labelledby="tab-mercado" tabindex="0" hidden>
+                  <h3 class="tab-title">Panorama de mercado <span class="info" title="Información" aria-hidden="true">ⓘ</span></h3>
+                  <div data-market></div>
+                </div>
+
+                <!-- INCORPORACIÓN -->
+                <div class="tabpanel tabpanel--incorporacion" role="tabpanel" id="panel-incorporacion" aria-labelledby="tab-incorporacion" tabindex="0" hidden>
+                  <h3 class="tab-title">Desglose del puntaje <span class="info" title="Información" aria-hidden="true">ⓘ</span></h3>
+                  <div class="breakdown" data-breakdown></div>
+                  <div class="highlights">
+                    <div><span class="ico ico--carrito" aria-hidden="true"></span><span>Potencial de venta<strong><span data-d="sales"></span> <small>u./sem</small></strong></span></div>
+                    <div><span class="ico ico--crecimiento" aria-hidden="true"></span><span>Crecimiento<small>(sem 2 vs 1)</small><strong data-d="growth"></strong></span></div>
+                    <div><span class="ico ico--barras" aria-hidden="true"></span><span>Confianza<strong class="confidence">Alta</strong></span></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="actions">
+                <button class="actions__save tap" type="button" data-save aria-pressed="false"><span class="ico ico--guardar" aria-hidden="true"></span><span data-save-label>Guardar</span></button>
+                <button class="actions__primary tap" type="button">Evaluar incorporación <span class="ico ico--flecha-derecha" aria-hidden="true"></span></button>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+      <!-- Card: una sola plantilla; sus estados se controlan con data-state / data-saved -->
+      <template id="tpl-card">
+        <article class="card-t" data-state="default" data-saved="false">
+          <div class="card-t__top">
+            <span class="badge"></span>
+            <button class="save tap" type="button" aria-pressed="false"><span class="ico ico--guardar" aria-hidden="true"></span></button>
+          </div>
+          <div class="card-t__main">
+            <div class="card-t__img"><img alt="" width="105" height="105"></div>
+            <div class="card-t__copy">
+              <h3><button class="select" type="button" aria-pressed="false"></button></h3>
+              <p class="brand"></p>
+              <span class="category"></span>
+            </div>
+          </div>
+          <div class="metrics">
+            <div><span>Venta proyectada</span><strong><span class="sales"></span> <small>u./sem</small></strong></div>
+            <div class="metrics__score"><span>Puntaje DETO</span><strong><span class="score"></span><small>/100</small></strong></div>
+          </div>
+          <div class="progress" aria-hidden="true"><span></span></div>
+          <button class="detail-btn tap" type="button">Ver detalle <span class="ico ico--flecha-derecha" aria-hidden="true"></span></button>
+        </article>
+      </template>
+
+      <!-- Fila: una sola plantilla; mismos estados que la card -->
+      <template id="tpl-row">
+        <article class="row-t" role="row" data-state="default" data-saved="false">
+          <div class="row-t__product" role="cell">
+            <img alt="" width="48" height="60">
+            <div>
+              <strong><button class="select" type="button" aria-pressed="false"></button></strong>
+              <span class="brand"></span>
+              <span class="badge"></span>
+            </div>
+          </div>
+          <span class="category" role="cell"></span>
+          <strong class="row-t__sales" role="cell"><span class="sales"></span> <small>u./sem</small></strong>
+          <strong class="row-t__qty" role="cell"></strong>
+          <strong class="row-t__score" role="cell"><span class="score"></span><small>/100</small></strong>
+          <div class="row-t__progress" role="cell" aria-hidden="true"><span></span></div>
+          <span role="cell"><button class="row-t__arrow tap" type="button"><span class="ico ico--chevron-derecha" aria-hidden="true"></span></button></span>
+        </article>
+      </template>
+      </main>
+    </div>
+  </div>
+
+  <script src="js/include.js"></script>
+  <script src="data/imagenes.js"></script>
+  <script src="data/fotos-jumbo.js"></script>
+  <script src="js/imagenes.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/informe.js"></script>
+  <script src="data/taxonomia.js" data-page-js></script>
+  <script src="data/deto-real.js" data-page-js></script>
+  <script src="js/guardados.js" data-page-js></script>
+  <script src="js/emociones.js" data-page-js></script>
+  <script src="js/tendencias.js" data-page-js></script>
+</body>
+</html>
