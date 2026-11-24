@@ -1,0 +1,109 @@
+/* Tokens del Home DETO — valores tomados de los frames de Figma 506:11 / 506:1056 / 506:2100 (1280×1080) */
+:root {
+  /* Tipografía */
+  --font: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+
+  /* Layout */
+  --sidebar-w: 190px;
+  --header-h: 60px;
+
+  /* Superficies */
+  --c-canvas: #f6f8fb;
+  --c-page: #f5f7f9;
+  --c-white: #ffffff;
+  --c-header: rgba(250, 252, 255, 0.78);
+
+  /* Texto */
+  --c-ink: #111827;
+  --c-ink-strong: #0c0e0d;
+  --c-ink-2: #282828;
+  --c-ink-3: #4e4e4e;
+  --c-muted: #696969;
+  --c-muted-2: #717171;
+  --c-muted-3: #898989;
+  --c-placeholder: #777d7b;
+  --c-out-of-month: #b3b8b5;
+
+  /* Bordes */
+  --c-border: #e5e7eb;
+  --c-border-header: #e7ebef;
+  --c-border-search: #e7e9ed;
+  --c-divider: #dfe2e8;
+
+  /* Verdes */
+  --c-brand: #1d4740;
+  --c-badge: #099763;
+  --c-badge-soft-bg: #dcfce7;
+  --c-badge-soft-fg: #166534;
+  --c-trend: #08a742;
+  --c-chip-up: #eafbd5;
+  --c-article: #f1f9ea;
+  --c-lime-soft: #e2f9b4;
+  --c-event-icon-bg: #effbda;
+  --c-event-bg: #f5f9f1;
+  --c-event-border: rgba(213, 240, 194, 0.5);
+
+  /* Naranjas */
+  --c-orange: #ff642d;
+  --c-orange-dot: #ff7a48;
+  --c-orange-notif: #ff6b00;
+  --c-warn-fg: #fd590c;
+  --c-warn-bg: #feecc6;
+  --c-peach: #fce1cf;
+  --c-peach-border: rgba(254, 216, 191, 0.65);
+
+  /* Sidebar */
+  --c-sb-1: #004c3f;
+  --c-sb-2: #00483e;
+  --c-sb-3: #003f37;
+  --c-sb-active-text: #052e27;
+  --c-sb-report: #e7ff35;
+  --c-sb-avatar: #28675e;
+  --c-sb-chevron: #a5bbb6;
+
+  /* Radios */
+  --r-3: 3px;
+  --r-9: 9px;
+  --r-10: 10px;
+  --r-12: 12px;
+  --r-14: 14px;
+  --r-16: 16px;
+  --r-19: 19px;
+  --r-20: 20px;
+  --r-pill: 999px;
+
+  /* Sombras */
+  --sh-card: 0 2px 2.5px rgba(0, 0, 0, 0.06);
+  --sh-kpi: 1px 3px 1px rgba(223, 226, 232, 0.55);
+  --sh-kpi-icon: 1px 3px 1px rgba(223, 226, 232, 0.4);
+  --sh-arrow: 0 1px 0 rgba(0, 0, 0, 0.05);
+  --sh-article: 0 4px 4px rgba(223, 226, 232, 0.25);
+
+  /* Foco */
+  --focus: 3px solid rgba(9, 151, 99, 0.45);
+  --focus-dark: 3px solid #e7ff35;
+}
+
+/* Tendencias — tokens tomados del Figma Make (styles/tokens.css) */
+:root {
+  --c-forest: #004c3f;
+  --c-lime: #daf897;
+  --c-lime-hover: #d1f583;
+  --c-lime-soft: #efffd0;
+  --c-muted-t: #6f7472;
+  --c-green-badge: #055b2b;
+  --c-green-score: #006b31;
+  --shadow-t-sm: 0 2px 5px rgba(0, 0, 0, 0.06);
+  --shadow-t-md: 0 3px 10px rgba(25, 48, 42, 0.09);
+  --shadow-t-card: 0 3px 9px rgba(22, 45, 38, 0.1);
+  --shadow-t-hover: 0 7px 15px rgba(22, 45, 38, 0.13);
+  --card-h: 286px;
+}
+
+/* Fotos reales de producto (js/imagenes.js): encajan sin deformarse y el fondo blanco se funde con la tarjeta */
+img.is-photo { object-fit: contain; mix-blend-mode: multiply; }

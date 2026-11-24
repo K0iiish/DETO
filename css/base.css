@@ -1,0 +1,65 @@
+/* Reset mínimo + estructura de página */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; min-width: 1280px;
+  font-family: var(--font); font-weight: var(--fw-regular);
+  color: var(--c-ink); background: var(--c-canvas);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, p { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+img { display: block; }
+:focus-visible { outline: var(--focus); outline-offset: 2px; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* Área clickeable mínima de 44×44 aunque el elemento visual sea más chico */
+.tap { position: relative; }
+.tap::after {
+  content: ""; position: absolute; left: 50%; top: 50%;
+  width: max(100%, 44px); height: max(100%, 44px); transform: translate(-50%, -50%);
+}
+
+/* Fondo de la app (degradado radial de los frames) */
+.app-shell { min-height: 100vh; background: radial-gradient(circle at 70% 0%, #f1f5ff 0, var(--c-canvas) 39%); }
+/* Solo el contenido principal scrollea: deja el margen para sidebar y header fijos */
+.app-main { margin-left: var(--sidebar-w); padding-top: var(--header-h); }
+.home { min-height: 1020px; background: var(--c-page); padding: 14px 18px 26px 22px; }
+
+.card { background: var(--c-white); border-radius: var(--r-10); box-shadow: var(--sh-card); }
+.section-head { display: flex; align-items: center; justify-content: space-between; min-height: 50px; padding: 5px 0; }
+.section-title { font-size: 20px; line-height: 28px; font-weight: var(--fw-bold); color: var(--c-ink); white-space: nowrap; }
+
+/* Link de acción (texto naranja + flecha) */
+.link-action {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 5px 2px; border-radius: var(--r-14);
+  font-size: 10px; line-height: 15px; font-weight: var(--fw-bold); color: var(--c-orange); white-space: nowrap;
+  transition: background-color .15s ease;
+}
+.link-action img { width: 15px; height: 15px; flex: none; }
+.link-action:hover { background: rgba(255, 100, 45, 0.08); text-decoration: underline; }
+.link-action:active { background: rgba(255, 100, 45, 0.16); }
+
+/* Badge de estado (punto + texto) */
+.status {
+  display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px;
+  border-radius: var(--r-pill); font-size: 9px; line-height: 13.5px; font-weight: var(--fw-bold); white-space: nowrap;
+}
+.status::before { content: ""; width: 6px; height: 6px; border-radius: var(--r-3); background: currentColor; flex: none; }
+.status--ok { background: var(--c-badge-soft-bg); color: var(--c-badge-soft-fg); }
+.status--warn { background: var(--c-warn-bg); color: var(--c-warn-fg); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* Entrada suave del contenido al navegar (sidebar y header no se recargan) */
+.page-enter { animation: page-in .24s ease backwards; }
+@keyframes page-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+#contenido:focus { outline: none; }
