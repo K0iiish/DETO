@@ -1,0 +1,1 @@
+Fotos opcionales de productos: guarda aquí <EAN>.jpg (o .png/.webp) y vuelve a correr herramientas/build_data.py.
