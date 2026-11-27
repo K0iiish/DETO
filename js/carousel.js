@@ -31,9 +31,14 @@ DETO.page("inicio", function () {
   function fmt(n) { return Number(n).toLocaleString("es-CL"); }
   function badgeLabel(t) { return t.trend === "Estable" ? "En evaluación" : t.trend; }
 
-  var OPPORTUNITIES = R.trends.slice(0, 3).map(function (t) {
+  /* Primero los lanzamientos que el equipo marcó como destacados («featured» en data/deto-real.js),
+     después el top 3 por puntaje DETO */
+  var FEATURED = R.trends.filter(function (t) { return t.featured; });
+  var TOP3 = R.trends.filter(function (t) { return !t.featured; }).slice(0, 3);
+  var OPPORTUNITIES = FEATURED.concat(TOP3).map(function (t) {
     var tags = [t.subcategory].concat(t.retailers.map(function (r) { return r; }));
-    if (t.sources.indexOf("Novedades") >= 0) tags.push("Novedad");
+    if (t.featured) tags.push("Lanzamiento");
+    else if (t.sources.indexOf("Novedades") >= 0) tags.push("Novedad");
     else if (t.sources.indexOf("Más vendidos") >= 0) tags.push("Más vendido");
     return {
       id: t.slug, variant: "b", tendencia: t.slug,
