@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DETO · Inicio</title>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/home.css" data-page-css>
+</head>
+<body data-page="inicio">
+  <div class="app-shell">
+    <div data-include="components/sidebar.html"></div>
+
+    <div class="app-main">
+      <div data-include="components/header.html"></div>
+
+      <main class="home" id="contenido" data-preload="assets/img/blob-verde.png assets/img/catalogo-producto-placeholder.svg">
+        <div class="welcome">
+          <h1 class="welcome__title">Hola, Felipe</h1>
+          <p class="welcome__text">Aquí tienes el panorama de oportunidades y actividades clave para hoy.</p>
+          <p class="welcome__source" data-source-note></p>
+        </div>
+
+        <section class="kpis card" aria-label="Indicadores generales">
+          <article class="kpi">
+            <div class="kpi__icon"><span class="kpi__icon-box kpi__icon-box--28"><img src="assets/icons/kpi-objetivo.svg" alt="" width="23.33" height="23.33"></span></div>
+            <div class="kpi__text"><p class="kpi__label" title="Productos fuera del catálogo con puntaje DETO ≥ 60">Oportunidades activas</p><p class="kpi__value" data-kpi="opportunities">–</p></div>
+          </article>
+          <article class="kpi">
+            <div class="kpi__icon"><span class="kpi__icon-box kpi__icon-box--28"><img src="assets/icons/kpi-grafico-tendencia.svg" alt="" width="23.35" height="11.68"></span></div>
+            <div class="kpi__text"><p class="kpi__label" title="Productos del catálogo que venden ≥10 % más en la semana 2 que en la 1">Productos en alza</p><p class="kpi__value" data-kpi="rising">–</p></div>
+          </article>
+          <article class="kpi">
+            <div class="kpi__icon"><span class="kpi__icon-box kpi__icon-box--24"><img src="assets/icons/kpi-calendario.svg" alt="" width="20" height="20"></span></div>
+            <div class="kpi__text"><p class="kpi__label" title="Productos que aparecieron por primera vez en la última captura de Líder y Jumbo">Novedades</p><p class="kpi__value" data-kpi="novelties">–</p></div>
+          </article>
+          <article class="kpi">
+            <div class="kpi__icon"><span class="kpi__icon-box kpi__icon-box--24"><img src="assets/icons/kpi-calendario.svg" alt="" width="20" height="20"></span></div>
+            <div class="kpi__text"><p class="kpi__label">Eventos próximos</p><p class="kpi__value" data-kpi="events">–</p></div>
+          </article>
+        </section>
+
+        <div class="dashboard">
+          <div class="dashboard__main">
+            <!-- Tendencias destacadas: el contenido de los slides lo renderiza js/carousel.js -->
+            <section class="card trends" aria-roledescription="carrusel" aria-label="Tendencias destacadas" id="tendencias-destacadas">
+              <div class="trends__head">
+                <div>
+                  <h2 class="trends__title">Tendencias destacadas</h2>
+                  <p class="trends__subtitle">Lanzamientos destacados y top 3 oportunidades recomendadas por DETO.</p>
+                </div>
+                <div class="trends__arrows">
+                  <button class="arrow-btn tap" type="button" data-carousel="prev" aria-label="Tendencia anterior"><img src="assets/icons/flecha-anterior.svg" alt="" width="16" height="16"></button>
+                  <button class="arrow-btn tap" type="button" data-carousel="next" aria-label="Siguiente tendencia"><img src="assets/icons/flecha-siguiente.svg" alt="" width="16" height="16"></button>
+                </div>
+              </div>
+              <div class="trends__body" data-carousel="body"></div>
+              <div class="trends__dots" data-carousel="dots" aria-label="Posición del carrusel"></div>
+              <p class="sr-only" aria-live="polite" data-carousel="status"></p>
+            </section>
+
+            <section class="card lab" aria-labelledby="lab-title">
+              <div class="section-head">
+                <h2 class="section-title" id="lab-title">LAB · <span class="section-title__soft">Pilotos sugeridos</span></h2>
+                <a class="link-action tap" href="lab.html" data-nav="lab">Ver todos los pilotos <img src="assets/icons/flecha-derecha-naranja.svg" alt="" width="15" height="15"></a>
+              </div>
+              <div class="lab__grid" data-pilots></div>
+            </section>
+          </div>
+
+          <section class="card calendar" aria-labelledby="calendar-title">
+            <div class="section-head">
+              <h2 class="section-title" id="calendar-title">Calendario comercial</h2>
+              <a class="link-action tap" href="calendario.html">Ver calendario <img src="assets/icons/flecha-derecha-naranja.svg" alt="" width="15" height="15"></a>
+            </div>
+
+            <div class="calendar__nav">
+              <button class="calendar__nav-btn tap" type="button" data-calendar="prev" aria-label="Mes anterior"><img src="assets/icons/calendario-anterior.svg" alt="" width="18" height="18"></button>
+              <p class="calendar__month" data-calendar="title" aria-live="polite">Noviembre de 2026</p>
+              <button class="calendar__nav-btn tap" type="button" data-calendar="next" aria-label="Mes siguiente"><img src="assets/icons/calendario-siguiente.svg" alt="" width="18" height="18"></button>
+            </div>
+
+            <div class="calendar__grid" data-calendar="grid" role="group" aria-labelledby="calendar-title"></div>
+
+            <div class="calendar__events-head">
+              <h3 class="calendar__events-title">Próximos eventos</h3>
+              <button class="add-event tap" type="button"><img src="assets/icons/calendario-agregar.svg" alt="" width="12" height="12">Agregar evento</button>
+            </div>
+
+            <ul class="events" data-events></ul>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="js/include.js"></script>
+  <script src="data/imagenes.js"></script>
+  <script src="data/fotos-jumbo.js"></script>
+  <script src="js/imagenes.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/informe.js"></script>
+  <script src="data/deto-real.js" data-page-js></script>
+  <script src="js/guardados.js" data-page-js></script>
+  <script src="data/lab.js" data-page-js></script>
+  <script src="data/eventos.js" data-page-js></script>
+  <script src="js/carousel.js" data-page-js></script>
+  <script src="js/calendar.js" data-page-js></script>
+</body>
+</html>
